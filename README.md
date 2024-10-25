@@ -1,2 +1,2 @@
 # CPF-checker
-Verificador de CPF teste pull
+Verificador de CPF em typescript
