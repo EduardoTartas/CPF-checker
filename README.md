@@ -1,2 +1,2 @@
 # CPF-checker
-Verificador de CPF em typescript. teste pc casa
+Verificador de CPF em typescript.
