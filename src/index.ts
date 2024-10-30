@@ -1,16 +1,16 @@
-let CPF:string = "12345678900"
+let CPF:string = "01008672270"
 let charIgual:boolean = true;
 let multiplicador:number = 10;
 let soma:number = 0;
 
-for(let i:number = 1; i < CPF.length; i++){
-    if( CPF[i]!=CPF[0]){
-        charIgual = false;
-        break;
-    }
-}
-
 function VerificaCPF (CPF:string){
+    for(let i:number = 1; i < CPF.length; i++){
+        if( CPF[i]!=CPF[0]){
+            charIgual = false;
+            break;
+        }
+    }
+
     if(CPF.length!=11 || charIgual){
         return false
     }
@@ -31,30 +31,20 @@ function VerificaCPF (CPF:string){
         
         let restoSD:number = 11 - (soma%11);
 
-        if(restoPD == parseInt(CPF[9])){
-            if(restoSD == parseInt(CPF[10])){
-                return true;
-            }
-            else if(restoSD>=10 && parseInt(CPF[10]) == 0){
-                return true;
-            }
-            else return false
+        let num1Verificador:boolean = parseInt(CPF[9]) == restoPD? true:false;
+        if (!num1Verificador){
+            num1Verificador = restoPD>=10 && parseInt(CPF[9]) == 0? true:false; 
         }
         
-        else if(restoPD>=10 && parseInt(CPF[9]) == 0){
-            if(restoSD == parseInt(CPF[10])){
-                return true;
-            }
-            else if (restoSD>=10 && parseInt(CPF[10]) == 0){
-                return true;
+        let num2Verificador:boolean = parseInt(CPF[10]) == restoSD? true:false;
+        if(!num2Verificador){
+            num2Verificador = restoSD>=10 && parseInt(CPF[10]) == 0? true:false;
+        }  
         
-            }
-            else return false;
-        }
-
-        else return false;
+        let veridico:boolean = num1Verificador && num2Verificador? true:false;
+        
+        return veridico;
     }
-
 }
 
 function VerificaEstadoCPF(CPF:string){
