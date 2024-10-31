@@ -74,6 +74,5 @@ function VerificaEstadoCPF(CPF:string){
         }
     }
 
-
 console.log(VerificaCPF(CPF));
 VerificaEstadoCPF(CPF);
