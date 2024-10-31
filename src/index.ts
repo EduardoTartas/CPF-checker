@@ -3,7 +3,7 @@ let charIgual:boolean = true;
 let multiplicador:number = 10;
 let soma:number = 0;
 
-function VerificaCPF (CPF:string){
+function VerificaCPF (CPF:string): boolean{
     for(let i:number = 1; i < CPF.length; i++){
         if( CPF[i]!=CPF[0]){
             charIgual = false;
@@ -31,18 +31,10 @@ function VerificaCPF (CPF:string){
         
         let restoSD:number = 11 - (soma%11);
 
-        let num1Verificador:boolean = parseInt(CPF[9]) == restoPD? true:false;
-        if (!num1Verificador){
-            num1Verificador = restoPD>=10 && parseInt(CPF[9]) == 0? true:false; 
-        }
-        
-        let num2Verificador:boolean = parseInt(CPF[10]) == restoSD? true:false;
-        if(!num2Verificador){
-            num2Verificador = restoSD>=10 && parseInt(CPF[10]) == 0? true:false;
-        }  
-        
-        let veridico:boolean = num1Verificador && num2Verificador? true:false;
-        
+        restoPD = restoSD >=10? 0:restoPD;
+        restoSD = restoSD >=10? 0:restoSD;
+        let veridico:boolean = restoPD == parseInt(CPF[9]) || restoSD == parseInt(CPF[10]) ? true:false;
+
         return veridico;
     }
 }
